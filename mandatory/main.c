@@ -6,7 +6,7 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:03:15 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/05 00:41:53 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:38:51 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	char	**all_args;
 	char	*args;
+	char	*tmp;
 	int		i;
 
 	if (argc == 1)
@@ -24,16 +25,16 @@ int	main(int argc, char **argv)
 	args = NULL;
 	while (argv[i])
 	{
+		tmp = args;
 		args = ft_strjoin(args, argv[i]);
 		if (!args)
-			return (write(2, "Error\n", 6), free(args), 1);
+			return (write(2, "Error\n", 6), free(tmp), free(args), 1);
 		i++;
+		free(tmp);
 	}
-	all_args = ft_split(args, ' ');
+	all_args = ft_split(args, ' ', '\t');
 	if (!all_args || h_error(all_args, args) == 0)
-	{
-		ft_free(all_args, count_word(args, ' '));
-		return (write(2, "Error\n", 6), free(args), 1);
-	}
-	free(args);
+		return (write(2, "Error\n", 6), ft_free(all_args, count_word(args, ' ',
+					'\t')), free(args), 1);
+	return (ft_free(all_args, count_word(args, ' ', '\t')), free(args), 0);
 }

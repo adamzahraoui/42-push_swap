@@ -6,30 +6,22 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:04:51 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/07 15:04:49 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:17:46 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    set_above_median(t_node **stack_a)
+void	free_stack(t_node *stack)
 {
-    int median;
-    t_node *stack;
+	t_node	*tmp;
 
-    stack = *stack_a;
-    if(size_node(stack_a) % 2 == 0)
-        median = size_node(stack_a) / 2;
-    else
-        median = (size_node(stack_a) / 2) + 1;
-    while(stack)
-    {
-        if(stack->index < median)
-            stack->above_median = 1;
-        else
-            stack->above_median = 0;
-        stack = stack->next;
-    }
+	while (stack)
+	{
+		tmp = (stack)->next;
+		free(stack);
+		stack = tmp;
+	}
 }
 
 int	size_node(t_node **stack_a)

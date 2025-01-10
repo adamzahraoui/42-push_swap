@@ -6,7 +6,7 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:03:43 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/05 16:07:31 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:42:22 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,5 @@ void	creat_stack(int *arr, int size)
 		i++;
 	}
 	set_index(stack_a);
-    if(size_node(&stack_a) <= 3)
-	    sort_stack(&stack_a);
-    else
-        sort_big_stack(&stack_a);
+	sort_stack(&stack_a);
 }

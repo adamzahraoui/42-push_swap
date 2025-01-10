@@ -1,66 +1,70 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 23:03:58 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/04 23:05:25 by adzahrao         ###   ########.fr       */
+/*   Created: 2024/11/04 10:20:42 by adzahrao          #+#    #+#             */
+/*   Updated: 2025/01/10 12:36:48 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen_get(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
-int	check_space(char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	char	*p;
+	char	d;
+	size_t	i;
 
+	p = (char *)s;
+	d = (char)c;
 	i = 0;
-	while (str[i])
+	while (p[i] != '\0')
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			return (1);
+		if (p[i] == d)
+			return (&p[i]);
 		i++;
 	}
-	return (0);
+	if (d == '\0')
+		return (&p[i]);
+	return (NULL);
 }
 
 char	*ft_strjoin(const char *dest, const char *src)
 {
 	char	*p;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
-	if (!dest)
-	{
-		dest = malloc(1);
-		if (!dest)
-			return (NULL);
-		dest = "";
-	}
-	p = malloc(ft_strlen((char *)dest) + ft_strlen((char *)src) + 3);
-	if (!p || check_space((char *)src) == 0)
+	if (!dest || !src)
 		return (NULL);
 	i = 0;
-	while (dest[i])
+	j = 0;
+	p = malloc(ft_strlen_get((char *)dest) + ft_strlen_get((char *)src) + 1);
+	if (!p)
+		return (NULL);
+	while (dest[i] != '\0')
 	{
 		p[i] = dest[i];
 		i++;
 	}
-	p[i++] = ' ';
-	j = 0;
-	while (src[j])
-		p[i++] = src[j++];
-	return (p[i++] = ' ', p[i] = '\0', p);
+	while (src[j] != '\0')
+	{
+		p[i + j] = src[j];
+		j++;
+	}
+	p[i + j] = '\0';
+	return (p);
 }
