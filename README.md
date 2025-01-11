@@ -38,6 +38,9 @@ Push_Swap is a sorting algorithm project that requires implementing a program wh
 # Compile the program
 make
 
+# Compile the checker
+make bonus
+
 # Run with numbers as arguments
 ./push_swap 2 1 3 6 5 8
 
