@@ -6,7 +6,7 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:54:12 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/10 18:07:08 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:47:10 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,11 @@ void	awl_sorting(t_node **stack_a, t_node **stack_b, t_push *push, int len)
 	i = 0;
 	while (i++ < len)
 	{
+		(*stack_a)->flag = push->flag;
 		if ((*stack_a)->index <= push->mid)
 			push_stack_b(stack_a, stack_b);
 		else
-		{
-			if (size_node(stack_b) > 0 && (*stack_a)->index < (push->mid) / 2)
-				rrr_ab(stack_a, stack_b);
-			else
-				rotat_stack_a(stack_a);
-		}
+			rotat_stack_a(stack_a);
 	}
 	push->max = push->mid;
 	push->mid = (push->max - push->limorah) / 2 + push->limorah;

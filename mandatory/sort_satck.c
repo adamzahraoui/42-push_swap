@@ -6,7 +6,7 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:28:25 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/09 19:02:37 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:09:57 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	sort_stack(t_node **stack_a)
 	len = size_node(stack_a);
 	stack_b = NULL;
 	stack = *stack_a;
-	if (len == 1)
+	if (wach_a_mrtba(stack_a, len))
 		return (free_stack(*stack_a), free_stack(stack_b));
 	else if (len == 2)
 	{
