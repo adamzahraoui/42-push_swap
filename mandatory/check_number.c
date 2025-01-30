@@ -6,13 +6,13 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:03:37 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/29 19:11:30 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:01:43 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_ft_atoi(char *str)
+ssize_t	ft_ft_atoi(char *str)
 {
 	ssize_t	r;
 	int		i;
@@ -44,7 +44,7 @@ int	ft_atoi(char *str)
 	int		i;
 	int		s;
 
-	(1) & (i = 0, s = 1);
+	(1) && (i = 0, s = 1);
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
 			s *= -1;
@@ -57,10 +57,10 @@ int	ft_atoi(char *str)
 	res = 0;
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 	{
-		if (!(res >= -2147483648 && res <= 2147483647))
+		res = (res * 10) + (str[i++] - '0');
+		if (!(res >= -2147483648 && res <= 2147483647) || (res * 10
+				/ 10 != res))
 			return (0);
-		res = (res * 10) + (str[i] - '0');
-		i++;
 	}
 	if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 		return (0);
