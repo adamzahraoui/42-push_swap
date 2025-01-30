@@ -6,7 +6,7 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:04:37 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/10 18:06:29 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:56:21 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_node
 {
-	int				data;
+	long			data;
 	int				index;
 	int				flag;
 	struct s_node	*next;

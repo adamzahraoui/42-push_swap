@@ -6,7 +6,7 @@
 /*   By: adzahrao <adzahrao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 23:03:37 by adzahrao          #+#    #+#             */
-/*   Updated: 2025/01/11 17:54:52 by adzahrao         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:11:30 by adzahrao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_ft_atoi(char *str)
 {
-	int	r;
-	int	i;
-	int	s;
+	ssize_t	r;
+	int		i;
+	int		s;
 
 	i = 0;
 	s = 1;
@@ -40,15 +40,16 @@ int	ft_ft_atoi(char *str)
 
 int	ft_atoi(char *str)
 {
-	long	res;
+	ssize_t	res;
 	int		i;
 	int		s;
 
-	i = 0;
-	s = 1;
+	(1) & (i = 0, s = 1);
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
 			s *= -1;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (0);
 	while (str[i] == '0' && str[i] != '\0')
 		i++;
 	if (str[i] == '\0' && str[i - 1] == '0')
@@ -56,21 +57,20 @@ int	ft_atoi(char *str)
 	res = 0;
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 	{
-		res = (res * 10) + (str[i] - '0');
 		if (!(res >= -2147483648 && res <= 2147483647))
 			return (0);
+		res = (res * 10) + (str[i] - '0');
 		i++;
 	}
 	if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 		return (0);
-	res = res * s;
 	return (1);
 }
 
 int	check_repet(char *str, int *arr, int *size)
 {
-	int	nb;
-	int	a;
+	ssize_t	nb;
+	int		a;
 
 	if (!str || !arr || !size)
 		return (0);
